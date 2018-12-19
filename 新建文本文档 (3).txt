@@ -1,0 +1,108 @@
+用户登录
+
+用户登录------》/ams/login
+用户注册 发送短信------》/ams/firstlogin/sendcode
+用户注册 短信校验------》/ams/firstlogin/checkcode
+忘记密码------》/ams/forgetpassword/setpassword
+退出登录------》/ams/loginout/{userCode}
+http://10.1.105.160:20001/ams/login?userCode=10203054&password=1
+http://10.1.105.160:20001/ams/login?userCode=11111111&password=1
+
+:
+用户名：10203054
+:
+密码：1           href="javascript:;"
+
+用户名：41234930 密码：1  李刚  手机号:15712889470
+
+01200002 asd123
+
+C:\Users\Public\Nwt\cache\recv\宋建强
+
+http://39.104.168.160:8080/api/admin.do#/user/interface/list?menu_a=menu-project&moduleId=153760366187809000034&projectId=153760229887107000015&projectName=%E5%BC%80%E6%94%BE%E5%BC%8F%E9%94%80%E5%94%AE%E5%B9%B3%E5%8F%B0%E9%A1%B9%E7%9B%AE
+admin /111111
+
+//ajax跨域请求例子
+var url="http://10.1.105.160:8080/WorkGroupManagment/open/getGroupById"
+    +"?id=1&callback=?";
+$.jsonp({
+  "url": url,
+  "success": function(data) {
+    $("#current-group").text("当前工作组:"+data.result.name);
+  },
+  "error": function(d,msg) {
+    alert("Could not find user "+msg);
+  }
+});
+
+/* $.jsonp({
+    		"url" : "http://10.1.105.160:80/ams/login"+"?userCode="+userCode+"password="+password+"&callback=",
+    		"success" : function(data) {
+    			alert(data.amsUser.userCode);
+    			window.location.href="index3.html";
+    			
+    		},
+    		"error" : function(d, msg) {
+    			alert("Could not find user " + msg);
+    		}
+    	}); */
+    	
+    	/*$.ajax({  
+    	    url:"http://10.1.105.160:80/ams/login?userCode="+userCode+"&password="+password+", 
+    	    type:'GET', 
+    	    dataType:'jsonp', 
+    	    jsonp: 'callback',          //将callback写在jsonp里作为参数连同请求一起发送 
+    	    jsonpCallback:'jsonpCallback1',    
+    	    success:function(data){            
+    	    console.log(data);       
+    	});*/
+
+
+http://39.104.168.160:8080/api/admin.do#/user/interface/list?menu_a=menu-project&moduleId=153760366187809000034&projectId=153760229887107000015&projectName=%E5%BC%80%E6%94%BE%E5%BC%8F%E9%94%80%E5%94%AE%E5%B9%B3%E5%8F%B0%E9%A1%B9%E7%9B%AE
+admin /111111
+xhrFields: {
+                withCredentials: true
+              },
+
+/* $.ajax({  
+    	    url:"http://10.1.105.160:20001/ams/login?userCode="+userCode+"&password="+password, 
+    	    type:'GET', 
+    	    dataType:'jsonp', 
+    	    jsonp: 'callback',          //将callback写在jsonp里作为参数连同请求一起发送 
+    	    jsonpCallback:'jsonpCallback1',    
+    	    success:function(data){            
+    	    console.log(data);       
+    		},
+    		error: function (data) {
+            alert("跨域失败!!");
+        	}
+    	}); */
+
+529
+
+ajax 设置Access-Control-Allow-Origin实现跨域访问
+
+10.1.105.160 root
+ncl@1234
+
+function test111(){
+	alert("进入测试");
+	 $.ajax({
+	        url : 'http://10.1.160.12:8111/services/P00001002923?wsdl',
+	        type : "POST",
+	        beforeSend : function(xhr) {
+	            xhr.withCredentials = true;
+	        },
+	        dataType :"html"
+	        data : {
+	            '<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelopexmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Headerxmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><in:sysHeader xsi:schemaLocation="http://www.newchinalife.com/common/header/in" xmlns:in="http://www.newchinalife.com/common/header/in"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><in:msgId>test28bb-7622-462e-bfb2-cbfcc46ba396</in:msgId><in:msgDate>2013-09-01</in:msgDate><in:msgTime>17:30:00.000</in:msgTime><in:servCd>P00001002923</in:servCd><in:sysCd>132</in:sysCd><in:bizId>000</in:bizId><in:bizType></in:bizType><in:orgCd>86</in:orgCd><in:resCd></in:resCd><in:resText></in:resText><in:bizResCd></in:bizResCd><in:bizResText></in:bizResText><in:ver>110.100.000</in:ver></in:sysHeader></soapenv:Header><soapenv:Bodyxmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><bd:request xmlns:bd="http://www.newchinalife.com/service/bd"xmlns:hd="http://www.newchinalife.com/service/hd"><bd:bizHeader><hd:Operator>1</hd:Operator><hd:RowNumStart>1</hd:RowNumStart><hd:PageRowNum>10</hd:PageRowNum><hd:PageFlag>1</hd:PageFlag><hd:TotalRowNum>1</hd:TotalRowNum><hd:OrderFlag>1</hd:OrderFlag><hd:OrderField>1</hd:OrderField></bd:bizHeader><bd:bizBody><bd:InputData><bd:UrgePayNoticeNo></bd:UrgePayNoticeNo> </bd:InputData></bd:bizBody></bd:request></soapenv:Body></soapenv:Envelope>'
+	        },
+	        success : function(data) {
+	            alert(data);
+	        },
+	        error : function(data) {
+	            return false;
+	        }
+	    });
+}
+
